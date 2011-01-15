@@ -28,5 +28,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `apacheErrors` (
-  `message` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `id` int(250) NOT NULL auto_increment,
+  `message` text NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
