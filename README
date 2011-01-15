@@ -1,3 +1,11 @@
+This is some of my favorite code so far. I am using fundamental code so I am sure someone else has written this elsewhere though all I really found was written in c as both a pipe and module. All c examples seemed too limited for what I wanted to do and change easily without recompiling. 
+
+httpd.conf
+ErrorLog "|/usr/bin/php /github/Apache-Log-PHP-Pipe/logProcess.php >> /var/log/httpd/error_log"
+
+The " >> /var/log/httpd/error_log" is used for simple echo to log, it may be removed and replaced by php's error log function.
+
+
 -- phpMyAdmin SQL Dump
 -- version 2.11.9.5
 -- http://www.phpmyadmin.net
