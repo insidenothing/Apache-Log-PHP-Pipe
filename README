@@ -32,3 +32,14 @@ CREATE TABLE IF NOT EXISTS `apacheErrors` (
   `message` text NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- END SQL
+
+I want to give due credit to:
+
+    * http://www.outoforder.cc/projects/apache/mod_log_sql for showing it is possible.
+    * http://www.sudleyplace.com/pipederrorlogs.html for the base model in php.
+
+
