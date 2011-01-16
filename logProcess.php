@@ -1,7 +1,7 @@
 <?PHP
 // Configuration 
 $database = "ON"; // (ON/OFF)
-$hardlog = "ON"; // (ON/OFF)
+$hardlog = "OFF"; // (ON/OFF)
 $email = "OFF"; // (ON/OFF)
 $logfile = "/var/log/httpd/error_log"; // full path to error log (make sure apache can write to log)
 $email_subject = "Apache Error at ".time(); // subject with time since the Unix Epoch appended
