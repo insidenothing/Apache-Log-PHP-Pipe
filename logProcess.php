@@ -7,15 +7,15 @@ $logfile = "/var/log/httpd/error_log"; // full path to error log (make sure apac
 $email_subject = "Apache Error at ".time(); // subject with time since the Unix Epoch appended
 $email_to = ""; // email address to send error to
 // Functions
-function getTable($string){
+function getProTable($string){
 // determine what table we should store the message in (apacheError/apacheLog) 
 return $table;
 }
-function getType($string){
+function getProType($string){
 // determine which of the 4 types of messages (GET/POST/error/notice)
 return $type;
 }
-function getFile($string){
+function getProFile($string){
 // attempt to pull the file name out of the message
 return $file; (full path/relative path/single file name)
 }
@@ -28,9 +28,9 @@ $stdin = fopen ('php://stdin', 'r');
 ob_implicit_flush (true); // Use unbuffered output
 while ($line = fgets ($stdin))
 {
- $table = getTable($line); 
- $type = getType($line);
- $file = getFile($line);
+ $table = getProTable($line); 
+ $type = getProType($line);
+ $file = getProFile($line);
  if($hardlog == "ON" && file_exists($logfile)){ 
   error_log($line,3,$logfile);
  } 
