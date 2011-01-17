@@ -16,8 +16,8 @@ function getProType($string){
 return $type;
 }
 function getProFile($string){
-// attempt to pull the file name out of the message
-return $file; (full path/relative path/single file name)
+// attempt to pull the file name out of the message (full path/relative path/single file name)
+return $file;
 }
 // Application
 if($database == "ON"){
