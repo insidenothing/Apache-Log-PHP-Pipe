@@ -38,7 +38,14 @@ while ($line = fgets ($stdin))
   mail($email_to,$email_subject,$line); 
  }
  if($database == "ON"){
-  @mysql_query("insert into apacheErrors (message) values ('$line')"); 
+$rTest=@mysql_query("select id, counter from apacheErrors where message = '".addslashes($line)."'");
+$dTest=mysql_fetch_array($rTest,MYSQL_ASSOC);
+if(!$dTest[id]){
+@mysql_query("insert into apacheErrors (message, counter, lastTime) values ('".addslashes($line)."','1',NOW())");
+}else{
+$counter = $dTest[counter]+1;
+@mysql_query("update apacheErrors set counter = '$counter', lastTime= NOW() where id = $dTest[id] ");
+}
  }
 }
 ?>
