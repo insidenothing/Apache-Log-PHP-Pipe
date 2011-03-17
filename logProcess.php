@@ -38,6 +38,7 @@ while ($line = fgets ($stdin))
   mail($email_to,$email_subject,$line); 
  }
  if($database == "ON"){
+$line = substr($line, 27);
 $rTest=@mysql_query("select id, counter from apacheErrors where message = '".addslashes($line)."'");
 $dTest=mysql_fetch_array($rTest,MYSQL_ASSOC);
 if(!$dTest[id]){
