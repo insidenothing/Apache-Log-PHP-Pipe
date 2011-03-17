@@ -15,6 +15,8 @@ Section 2: MySQL Scheme
 CREATE TABLE IF NOT EXISTS `apacheErrors` (
   `id` int(250) NOT NULL auto_increment,
   `message` text NOT NULL,
+ `counter` int(255) NOT NULL,
+  `lastTime` datetime NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
