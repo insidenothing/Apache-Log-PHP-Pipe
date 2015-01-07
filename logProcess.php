@@ -1,5 +1,5 @@
 <?PHP
-// Configuration 
+// Configuration
 $database = "ON"; // (ON/OFF)
 $hardlog = "OFF"; // (ON/OFF)
 $email = "OFF"; // (ON/OFF)
@@ -8,7 +8,7 @@ $email_subject = "Apache Error at ".time(); // subject with time since the Unix 
 $email_to = ""; // email address to send error to
 // Functions
 function getProTable($string){
-// determine what table we should store the message in (apacheError/apacheLog) 
+// determine what table we should store the message in (apacheError/apacheLog)
 return $table;
 }
 function getProType($string){
@@ -21,24 +21,27 @@ return $file;
 }
 // Application
 if($database == "ON"){
- mysql_connect(); //connect to database
- mysql_select_db('apache'); // select database
+ mysql_connect(''); //connect to database
+ mysql_select_db(''); // select database
 }
 $stdin = fopen ('php://stdin', 'r');
 ob_implicit_flush (true); // Use unbuffered output
 while ($line = fgets ($stdin))
 {
- $table = getProTable($line); 
+ $table = getProTable($line);
  $type = getProType($line);
  $file = getProFile($line);
- if($hardlog == "ON" && file_exists($logfile)){ 
+ if($hardlog == "ON" && file_exists($logfile)){
   error_log($line,3,$logfile);
- } 
+ }
  if($email == "ON" && $email_to && $email_subject){
-  mail($email_to,$email_subject,$line); 
+  mail($email_to,$email_subject,$line);
  }
  if($database == "ON"){
 $line = substr($line, 27);
+$parts=explode(']',$line);
+$line = $parts[2];
+
 $rTest=@mysql_query("select id, counter from apacheErrors where message = '".addslashes($line)."'");
 $dTest=mysql_fetch_array($rTest,MYSQL_ASSOC);
 if(!$dTest[id]){
